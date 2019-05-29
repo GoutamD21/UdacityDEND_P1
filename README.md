@@ -28,9 +28,9 @@ The JSON data was filtered from both the File as well as after loading into a Da
 
 Table Structures :
 
-![songplay table](https://imgur.com/DDAqBZV)
-![Users table](https://imgur.com/UydZLK9)
-![Song Table](https://imgur.com/FLzUjnD)
-![Artist Table](https://imgur.com/3OmygrW)
-![Time table](https://imgur.com/Giyjfar)
+![songplay table](https://imgur.com/DDAqBZV.png)
+![Users table](https://imgur.com/UydZLK9.png)
+![Song Table](https://imgur.com/FLzUjnD.png)
+![Artist Table](https://imgur.com/3OmygrW.png)
+![Time table](https://imgur.com/Giyjfar.png)
 
