@@ -26,3 +26,11 @@ Specific Create table statements where created in an another script that will be
 A data pipeline script that will navigate to the folder structure to fetch the JSON files into Data Frames and Insert into tables.
 The JSON data was filtered from both the File as well as after loading into a DataFrame. 
 
+Table Structures :
+
+![songplay table](https://imgur.com/DDAqBZV)
+![Users table](https://imgur.com/UydZLK9)
+![Song Table](https://imgur.com/FLzUjnD)
+![Artist Table](https://imgur.com/3OmygrW)
+![Time table](https://imgur.com/Giyjfar)
+

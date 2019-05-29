@@ -10,8 +10,8 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 
 songplay_table_create = ("""CREATE TABLE IF NOT EXISTS songplays( 
 songplay_id SERIAL CONSTRAINT spid PRIMARY KEY, 
-start_time timestamp, 
-user_id varchar, 
+start_time timestamp NOT NULL, 
+user_id varchar NOT NULL, 
 level varchar, 
 song_id varchar, 
 artist_id varchar, 
@@ -20,7 +20,7 @@ location varchar,
 user_agent varchar );""")
 
 user_table_create = (""" CREATE TABLE IF NOT EXISTS users (
-user_id varchar NOT NULL, 
+user_id varchar CONSTRAINT uid PRIMARY KEY, 
 first_name varchar, 
 last_name varchar, 
 gender varchar, 
@@ -34,14 +34,14 @@ year numeric,
 duration decimal(10,5));""")
 
 artist_table_create = (""" CREATE TABLE IF NOT EXISTS artists(
-artist_id varchar NOT NULL, 
+artist_id varchar CONSTRAINT arid PRIMARY KEY, 
 name varchar, 
 location varchar, 
 lattitude decimal, 
 longitude decimal);""")
 
 time_table_create = (""" CREATE TABLE IF NOT EXISTS time( 
-start_time timestamp NOT NULL, 
+start_time timestamp CONSTRAINT tid PRIMARY KEY, 
 hour numeric, 
 day numeric, 
 week numeric, 
@@ -55,17 +55,17 @@ songplay_table_insert = ("""INSERT INTO songplays (start_time, user_id, level, s
 VALUES (%s, %s, %s, %s, %s, %s, %s, %s);""")
 
 user_table_insert = ("""INSERT INTO users (user_id, first_name, last_name, gender, level)
-VALUES (%s, %s, %s, %s, %s );""")
+VALUES (%s, %s, %s, %s, %s ) ON CONFLICT (user_id) DO UPDATE SET level = EXCLUDED.level;""")
 
 song_table_insert = ("""INSERT INTO songs (song_id, title, artist_id, year, duration)
-VALUES (%s, %s, %s, %s, %s);""")
+VALUES (%s, %s, %s, %s, %s) ON CONFLICT DO NOTHING;""")
 
 artist_table_insert = ("""INSERT INTO artists (artist_id, name, location, lattitude, longitude)
-VALUES (%s, %s, %s, %s, %s);""")
+VALUES (%s, %s, %s, %s, %s)  ON CONFLICT (artist_id) DO UPDATE SET location = EXCLUDED.location, lattitude = EXCLUDED.lattitude, longitude = EXCLUDED.longitude ;""")
 
 
 time_table_insert = ("""INSERT INTO time (start_time, hour, day, week, month, year, weekday)
-VALUES (%s, %s, %s, %s, %s, %s, %s );""")
+VALUES (%s, %s, %s, %s, %s, %s, %s ) ON CONFLICT DO NOTHING;""")
 
 # FIND SONGS
 
